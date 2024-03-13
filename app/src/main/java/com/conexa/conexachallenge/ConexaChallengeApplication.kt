@@ -1,4 +1,4 @@
-package com.conexa
+package com.conexa.conexachallenge
 
 import android.app.Application
 import dagger.hilt.android.HiltAndroidApp
