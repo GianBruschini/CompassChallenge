@@ -1,9 +1,9 @@
 package com.conexa.conexachallenge.data.di
 
 import android.content.Context
-import com.conexa.conexachallenge.data.feature.new.NewLocalDataSource
-import com.conexa.conexachallenge.data.feature.new.NewRemoteDataSource
-import com.conexa.conexachallenge.data.feature.new.NewRepository
+import com.conexa.conexachallenge.data.feature.report.NewLocalDataSource
+import com.conexa.conexachallenge.data.feature.report.NewRemoteDataSource
+import com.conexa.conexachallenge.data.feature.report.NewRepository
 import com.conexa.conexachallenge.data.service.ApiClient
 import com.google.gson.Gson
 import dagger.Module

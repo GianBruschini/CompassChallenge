@@ -1,9 +1,7 @@
-package com.conexa.conexachallenge.data.feature.new
+package com.conexa.conexachallenge.data.feature.report
 
 
 import com.conexa.conexachallenge.data.api.model.response.News
-import com.conexa.conexachallenge.data.feature.new.NewLocalDataSource
-import com.conexa.conexachallenge.data.feature.new.NewRemoteDataSource
 import javax.inject.Inject
 import com.conexa.conexachallenge.domain.model.ResultNews
 

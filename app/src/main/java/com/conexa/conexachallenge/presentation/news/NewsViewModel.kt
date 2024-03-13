@@ -3,7 +3,7 @@ package com.conexa.conexachallenge.presentation.news
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.conexa.conexachallenge.data.api.model.response.News
-import com.conexa.conexachallenge.domain.usecase.new.GetNewsUseCase
+import com.conexa.conexachallenge.domain.usecase.report.GetNewsUseCase
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.Job
 import kotlinx.coroutines.flow.MutableStateFlow

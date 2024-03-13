@@ -1,7 +1,7 @@
 package com.conexa.conexachallenge.di
 
-import com.conexa.conexachallenge.data.feature.new.NewRepository
-import com.conexa.conexachallenge.domain.usecase.new.GetNewsUseCase
+import com.conexa.conexachallenge.data.feature.report.NewRepository
+import com.conexa.conexachallenge.domain.usecase.report.GetNewsUseCase
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn

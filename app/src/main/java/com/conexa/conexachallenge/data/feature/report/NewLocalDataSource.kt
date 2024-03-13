@@ -1,4 +1,4 @@
-package com.conexa.conexachallenge.data.feature.new
+package com.conexa.conexachallenge.data.feature.report
 
 import android.content.Context
 import android.content.SharedPreferences

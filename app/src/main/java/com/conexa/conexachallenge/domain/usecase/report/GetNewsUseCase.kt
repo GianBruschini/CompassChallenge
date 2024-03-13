@@ -1,7 +1,7 @@
-package com.conexa.conexachallenge.domain.usecase.new
+package com.conexa.conexachallenge.domain.usecase.report
 
 import com.conexa.conexachallenge.data.api.model.response.News
-import com.conexa.conexachallenge.data.feature.new.NewRepository
+import com.conexa.conexachallenge.data.feature.report.NewRepository
 import kotlinx.coroutines.CoroutineDispatcher
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
