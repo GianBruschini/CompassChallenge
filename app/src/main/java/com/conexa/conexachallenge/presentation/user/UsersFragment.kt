@@ -16,6 +16,7 @@ import com.conexa.conexachallenge.data.api.model.response.users.UserResponse
 import com.conexa.conexachallenge.databinding.FragmentUsersBinding
 import com.conexa.conexachallenge.presentation.adapters.UsersAdapter
 import com.conexa.conexachallenge.presentation.base.BaseFragment
+import com.conexa.conexachallenge.util.BundleKeys
 import com.conexa.conexachallenge.util.showCustomToast
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.launch
@@ -116,7 +117,16 @@ class UsersFragment : BaseFragment<FragmentUsersBinding>(
     }
 
     override fun onitemClick(position: Int) {
+        listOfUsers?.get(position)
+            ?.let { navigateToProductDetailFragment(it.address.geo.lat,it.address.geo.lng) }
+    }
 
+    private fun navigateToProductDetailFragment(lat: String, lng: String) {
+        val bundle = Bundle().apply {
+            putString(BundleKeys.USER_LAT, lat)
+            putString(BundleKeys.USER_LNG, lng)
+        }
+        findNavController().navigate(R.id.action_newsFragment_to_newsDetail, bundle)
     }
 
 }
