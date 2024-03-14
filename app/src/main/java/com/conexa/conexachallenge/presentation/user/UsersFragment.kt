@@ -72,7 +72,7 @@ class UsersFragment : BaseFragment<FragmentUsersBinding>(
             ContextCompat.getDrawable(requireContext(), R.drawable.rounded_gradient_error)
                 ?.let { drawable ->
                     Toast(requireContext()).showCustomToast(
-                        userMessage.toString(),
+                        userMessage,
                         drawable,
                         requireActivity()
                     )

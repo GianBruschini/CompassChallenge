@@ -3,6 +3,7 @@ package com.conexa.conexachallenge.data.feature.users
 import com.conexa.conexachallenge.data.api.model.response.posts.NewsByIdResponse
 import com.conexa.conexachallenge.data.api.model.response.posts.NewsResponse
 import com.conexa.conexachallenge.data.api.model.response.users.UserResponse
+import com.conexa.conexachallenge.data.feature.connectionerrors.ErrorMessages
 import com.conexa.conexachallenge.data.feature.report.NewLocalDataSource
 import com.conexa.conexachallenge.data.feature.report.NewRemoteDataSource
 import com.conexa.conexachallenge.domain.model.ResultNews
@@ -25,7 +26,7 @@ class UsersRepository @Inject constructor(
             if (localResult != null) {
                 ResultNews.Success(localResult)
             } else {
-                ResultNews.Error(Exception("No se pueden obtener datos de usuarios sin conexión"))
+                ResultNews.Error(Exception(ErrorMessages.NO_DATA_AVAILABLE))
             }
         }
     }

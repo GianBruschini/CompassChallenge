@@ -41,11 +41,25 @@ class NewsFragment : BaseFragment<FragmentNewsBinding>(
     }
 
     private fun initUi() {
+        checkConnection()
         initRv()
         observeViewModel()
         fetchNews()
         initOnClicks()
         setSearchLogic()
+    }
+
+    private fun checkConnection() {
+        if(!NetworkUtils.isNetworkAvailable()){
+            ContextCompat.getDrawable(requireContext(), R.drawable.rounded_gradient_error)
+                ?.let { drawable ->
+                    Toast(requireContext()).showCustomToast(
+                        getString(R.string.error_network_connection),
+                        drawable,
+                        requireActivity()
+                    )
+                }
+        }
     }
 
     private fun setSearchLogic() {
