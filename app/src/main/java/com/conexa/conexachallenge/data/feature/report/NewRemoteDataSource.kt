@@ -2,7 +2,8 @@ package com.conexa.conexachallenge.data.feature.report
 
 
 import com.conexa.conexachallenge.data.api.BaseRemoteDataSource
-import com.conexa.conexachallenge.data.api.model.response.News
+import com.conexa.conexachallenge.data.api.model.response.posts.NewsByIdResponse
+import com.conexa.conexachallenge.data.api.model.response.posts.NewsResponse
 import com.conexa.conexachallenge.data.service.ApiClient
 import com.google.gson.Gson
 import javax.inject.Inject
@@ -14,10 +15,18 @@ open class NewRemoteDataSource @Inject constructor(
     gson: Gson,
 ) : BaseRemoteDataSource(gson) {
 
-    internal suspend fun getUserProfile(): ResultNews<List<News>> {
+    internal suspend fun getPosts(): ResultNews<List<NewsResponse>> {
         return getResponse(
             request = {
                 apiClient.getNews()
+            },
+        )
+    }
+
+    internal suspend fun getNewsById(newsId:Int): ResultNews<NewsByIdResponse> {
+        return getResponse(
+            request = {
+                apiClient.getNewsById(newsId)
             },
         )
     }

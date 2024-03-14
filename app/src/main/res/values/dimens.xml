@@ -8,7 +8,7 @@
 
     <dimen name="image_medium_small">20dp</dimen>
     <dimen name="image_medium">30dp</dimen>
-    <dimen name="image_x_medium">50dp</dimen>
+    <dimen name="image_x_medium">85dp</dimen>
     <dimen name="image_big">100dp</dimen>
     <dimen name="image_x_big">180dp</dimen>
 
@@ -28,9 +28,14 @@
     <dimen name="height_big">80dp</dimen>
     <dimen name="height_x_big">180dp</dimen>
 
+    <dimen name="width_medium_small">25dp</dimen>
+    <dimen name="width_medium">50dp</dimen>
+    <dimen name="width_big">80dp</dimen>
+    <dimen name="width_x_big">380dp</dimen>
 
-    <dimen name="margin_small">5dp</dimen>
-    <dimen name="margin_standard">12dp</dimen>
+
+    <dimen name="margin_small">4dp</dimen>
+    <dimen name="margin_standard">8dp</dimen>
     <dimen name="margin_medium">15dp</dimen>
     <dimen name="margin_big">20dp</dimen>
     <dimen name="margin_x_big">30dp</dimen>
@@ -40,6 +45,6 @@
     <dimen name="text_small">14sp</dimen>
     <dimen name="text_standard">16sp</dimen>
     <dimen name="text_medium">18sp</dimen>
-    <dimen name="text_big">20sp</dimen>
+    <dimen name="text_big">25sp</dimen>
     <dimen name="text_x_big">24sp</dimen>
 </resources>

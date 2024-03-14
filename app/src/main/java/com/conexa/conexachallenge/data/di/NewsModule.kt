@@ -4,6 +4,9 @@ import android.content.Context
 import com.conexa.conexachallenge.data.feature.report.NewLocalDataSource
 import com.conexa.conexachallenge.data.feature.report.NewRemoteDataSource
 import com.conexa.conexachallenge.data.feature.report.NewRepository
+import com.conexa.conexachallenge.data.feature.users.UsersLocalDataSource
+import com.conexa.conexachallenge.data.feature.users.UsersRemoteDataSource
+import com.conexa.conexachallenge.data.feature.users.UsersRepository
 import com.conexa.conexachallenge.data.service.ApiClient
 import com.google.gson.Gson
 import dagger.Module
@@ -28,6 +31,15 @@ internal object NewsModule {
 
     @Provides
     @Singleton
+    fun provideLocalUserDataSource(
+        @ApplicationContext appContext: Context,
+        gson: Gson,
+    ): UsersLocalDataSource {
+        return UsersLocalDataSource(appContext, gson)
+    }
+
+    @Provides
+    @Singleton
     fun provideRemoteNewDataSource(
         apiClient: ApiClient,
         gson: Gson,
@@ -37,10 +49,28 @@ internal object NewsModule {
 
     @Provides
     @Singleton
+    fun provideRemoteUserDataSource(
+        apiClient: ApiClient,
+        gson: Gson,
+    ): UsersRemoteDataSource {
+        return UsersRemoteDataSource(apiClient, gson)
+    }
+
+    @Provides
+    @Singleton
     fun provideNewRepository(
         userRemoteDataSource: NewRemoteDataSource,
         userLocalDataSource: NewLocalDataSource,
     ): NewRepository {
         return NewRepository(userRemoteDataSource, userLocalDataSource)
+    }
+
+    @Provides
+    @Singleton
+    fun provideUserRepository(
+        userRemoteDataSource: UsersRemoteDataSource,
+        userLocalDataSource: UsersLocalDataSource,
+    ): UsersRepository {
+        return UsersRepository(userRemoteDataSource, userLocalDataSource)
     }
 }

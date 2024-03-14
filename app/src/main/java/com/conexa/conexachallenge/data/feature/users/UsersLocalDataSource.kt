@@ -1,12 +1,13 @@
-package com.conexa.conexachallenge.data.feature.report
+package com.conexa.conexachallenge.data.feature.users
 
 import android.content.Context
 import android.content.SharedPreferences
 import com.conexa.conexachallenge.data.api.model.response.posts.NewsResponse
+import com.conexa.conexachallenge.data.api.model.response.users.UserResponse
 import com.google.gson.Gson
 import com.google.gson.reflect.TypeToken
 
-class NewLocalDataSource(context: Context, private val gson: Gson) {
+class UsersLocalDataSource(context: Context, private val gson: Gson) {
 
     private val preferences: SharedPreferences =
         context.getSharedPreferences(
@@ -20,40 +21,40 @@ class NewLocalDataSource(context: Context, private val gson: Gson) {
         editor.apply()
     }
 
-    private var newsList: List<NewsResponse>?
+    private var usersList: List<UserResponse>?
         get() {
-            val json = preferences.getString(PREF_NEWS_LIST, null)
+            val json = preferences.getString(PREF_USERS_LIST, null)
             return if (json != null) {
-                gson.fromJson(json, object : TypeToken<List<NewsResponse>>() {}.type)
+                gson.fromJson(json, object : TypeToken<List<UserResponse>>() {}.type)
             } else {
                 null
             }
         }
         set(value) {
             preferences.edit {
-                it.putString(PREF_NEWS_LIST, gson.toJson(value))
+                it.putString(PREF_USERS_LIST, gson.toJson(value))
             }
         }
 
-    fun save(news: List<NewsResponse>) {
-        newsList = news
+    fun save(users: List<UserResponse>) {
+        usersList = users
     }
 
-    fun get(): List<NewsResponse>? {
+    fun get(): List<UserResponse>? {
         return try {
-            newsList
+            usersList
         } catch (e: Exception) {
             null
         }
     }
 
     fun clear() {
-        newsList = null
+        usersList = null
     }
 
     companion object {
         private const val MODE = Context.MODE_PRIVATE
-        private const val PREF_FILE_NAME = "newsLocalDataSource"
-        private const val PREF_NEWS_LIST = "newsList"
+        private const val PREF_FILE_NAME = "userLocalDataSource"
+        private const val PREF_USERS_LIST = "userList"
     }
 }

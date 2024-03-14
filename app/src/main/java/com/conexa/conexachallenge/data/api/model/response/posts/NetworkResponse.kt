@@ -1,4 +1,4 @@
-package com.conexa.conexachallenge.data.api.model.response
+package com.conexa.conexachallenge.data.api.model.response.posts
 
 data class NetworkResponse<T>(
     var code: Long,

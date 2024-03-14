@@ -1,6 +1,6 @@
-package com.conexa.conexachallenge.data.api.model.response
+package com.conexa.conexachallenge.data.api.model.response.posts
 
-data class News(
+data class NewsResponse(
     val id: Int,
     val title: String,
     val content: String,

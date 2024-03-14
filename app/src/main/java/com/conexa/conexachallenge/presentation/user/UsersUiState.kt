@@ -1,13 +1,13 @@
-package com.conexa.conexachallenge.presentation.news
+package com.conexa.conexachallenge.presentation.user
 
 import com.conexa.conexachallenge.data.api.model.response.posts.NewsByIdResponse
 import com.conexa.conexachallenge.data.api.model.response.posts.NewsResponse
+import com.conexa.conexachallenge.data.api.model.response.users.UserResponse
 import com.conexa.conexachallenge.util.BindingString
 
-data class NewsUiState(
-    val news: List<NewsResponse> = emptyList(),
-    val newsById: NewsByIdResponse? = null,
+data class UsersUiState(
+    val users: List<UserResponse> = emptyList(),
     val loading: Boolean = false,
     val userMessage: String? = null,
-    val errorMessage: BindingString? = null,
+    val errorMessage: String? = null,
 )
