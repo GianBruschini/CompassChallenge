@@ -17,7 +17,7 @@ class UsersAdapter: RecyclerView.Adapter<UsersAdapter.MyViewHolder>() {
 
 
     interface OnItemClickListener {
-        fun onitemClick(position: Int)
+        fun onUserItemClick(position: Int)
     }
 
     fun setOnItemClickListener(listener: OnItemClickListener) {
@@ -53,11 +53,11 @@ class UsersAdapter: RecyclerView.Adapter<UsersAdapter.MyViewHolder>() {
     inner class MyViewHolder(val binding: UserItemBinding) :
         RecyclerView.ViewHolder(binding.root) {
         init {
-            binding.cardUsers.setOnClickListener {
+            binding.usersOpenMap.setOnClickListener {
                 if (mListener != null) {
                     val position = adapterPosition
                     if (position != RecyclerView.NO_POSITION) {
-                        mListener!!.onitemClick(position)
+                        mListener!!.onUserItemClick(position)
                     }
                 }
             }

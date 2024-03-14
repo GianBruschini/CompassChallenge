@@ -4,6 +4,7 @@ import android.annotation.SuppressLint
 import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
+import android.util.Log
 import android.view.View
 import android.widget.Toast
 import androidx.core.content.ContextCompat
@@ -19,6 +20,7 @@ import com.conexa.conexachallenge.databinding.FragmentNewsBinding
 import com.conexa.conexachallenge.presentation.adapters.NewsAdapter
 import com.conexa.conexachallenge.presentation.base.BaseFragment
 import com.conexa.conexachallenge.util.BundleKeys
+import com.conexa.conexachallenge.util.hideKeyboard
 import com.conexa.conexachallenge.util.showCustomToast
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.launch
@@ -63,9 +65,14 @@ class NewsFragment : BaseFragment<FragmentNewsBinding>(
         val filteredList = listOfNews?.filter { news ->
             news.title.contains(query, true) || news.content.contains(query, true)
         }
-        newsAdapter.setList(filteredList as ArrayList<NewsResponse>)
-        newsAdapter.notifyDataSetChanged()
+
+
+        if (filteredList != null) {
+            newsAdapter.setList(filteredList as ArrayList<NewsResponse>)
+            newsAdapter.notifyDataSetChanged()
+        }
     }
+
 
 
     private fun initRv() {
@@ -80,6 +87,7 @@ class NewsFragment : BaseFragment<FragmentNewsBinding>(
 
     private fun initOnClicks() {
         binding.btnUsers.setOnClickListener {
+            hideKeyboard()
             findNavController().navigate(R.id.action_newsFragment_to_usersFragment)
         }
     }
@@ -145,11 +153,11 @@ class NewsFragment : BaseFragment<FragmentNewsBinding>(
 
     override fun onitemClick(position: Int) {
         listOfNews?.get(position)
-            ?.let { navigateToProductDetailFragment(it.id) }
+            ?.let { navigateToUsersDetailFragment(it.id) }
 
     }
 
-    private fun navigateToProductDetailFragment(newId: Int) {
+    private fun navigateToUsersDetailFragment(newId: Int) {
         val bundle = Bundle().apply {
             putInt(BundleKeys.NEW_ID, newId)
         }

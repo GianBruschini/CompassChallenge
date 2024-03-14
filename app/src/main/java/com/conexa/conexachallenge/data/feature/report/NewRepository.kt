@@ -7,19 +7,19 @@ import javax.inject.Inject
 import com.conexa.conexachallenge.domain.model.ResultNews
 
 class NewRepository @Inject constructor(
-    private val userRemoteDataSource: NewRemoteDataSource,
-    private val newLocalDataSource: NewLocalDataSource,
+    private val newsRemoteDataSource: NewRemoteDataSource,
+    private val newsLocalDataSource: NewLocalDataSource,
 ) {
     suspend fun getNews(): ResultNews<List<NewsResponse>> {
-        val result = userRemoteDataSource.getPosts()
+        val result = newsRemoteDataSource.getPosts()
         if (result is ResultNews.Success) {
-            newLocalDataSource.save(result.data)
+            newsLocalDataSource.save(result.data)
         }
         return result
     }
 
     suspend fun getNewsById(newsId:Int): ResultNews<NewsByIdResponse> {
-        val result = userRemoteDataSource.getNewsById(newsId)
+        val result = newsRemoteDataSource.getNewsById(newsId)
         return result
     }
 }

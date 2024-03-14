@@ -13,7 +13,7 @@
     <androidx.cardview.widget.CardView
         android:id="@+id/cardUsers"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="180dp"
         android:clickable="true"
         android:descendantFocusability="blocksDescendants"
         android:focusable="true"
@@ -34,28 +34,48 @@
             android:paddingEnd="@dimen/margin_standard"
             android:paddingBottom="@dimen/margin_small">
 
+
             <ImageView
                 android:id="@+id/usersImage"
                 android:layout_width="@dimen/image_x_medium"
                 android:layout_height="@dimen/image_x_medium"
+                android:src="@drawable/icon_user"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
-                tools:ignore="ContentDescription"
-                android:src="@drawable/icon_user" />
+                app:layout_constraintVertical_bias="0.371"
+                tools:ignore="ContentDescription" />
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/usersOpenMap"
+                style="@style/NormalText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="40dp"
+                android:backgroundTint="@color/gray"
+                android:ellipsize="end"
+                android:maxLines="5"
+                android:padding="@dimen/margin_medium"
+                android:text="@string/map_see_location"
+                android:textSize="12sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.485"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/usersTitle" />
 
             <TextView
                 android:id="@+id/usersTitle"
                 style="@style/NormalText"
-                android:layout_width="0dp"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="@dimen/margin_standard"
                 android:layout_marginTop="12dp"
                 android:ellipsize="end"
-                android:maxLines="5"
-                android:padding="15dp"
+                android:maxLines="1"
+                android:padding="@dimen/margin_medium"
+                android:textSize="@dimen/text_standard"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintHorizontal_bias="0.108"
                 app:layout_constraintStart_toEndOf="@id/usersImage"
                 app:layout_constraintTop_toTopOf="parent"
                 tools:text="Enrique Dominguez" />

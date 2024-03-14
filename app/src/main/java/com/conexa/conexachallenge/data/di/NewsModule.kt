@@ -59,10 +59,10 @@ internal object NewsModule {
     @Provides
     @Singleton
     fun provideNewRepository(
-        userRemoteDataSource: NewRemoteDataSource,
-        userLocalDataSource: NewLocalDataSource,
+        newsRemoteDataSource: NewRemoteDataSource,
+        newsLocalDataSource: NewLocalDataSource,
     ): NewRepository {
-        return NewRepository(userRemoteDataSource, userLocalDataSource)
+        return NewRepository(newsRemoteDataSource, newsLocalDataSource)
     }
 
     @Provides

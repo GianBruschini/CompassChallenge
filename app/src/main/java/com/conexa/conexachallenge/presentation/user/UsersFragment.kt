@@ -12,6 +12,7 @@ import androidx.lifecycle.repeatOnLifecycle
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.conexa.conexachallenge.R
+import com.conexa.conexachallenge.data.api.model.response.posts.NewsResponse
 import com.conexa.conexachallenge.data.api.model.response.users.UserResponse
 import com.conexa.conexachallenge.databinding.FragmentUsersBinding
 import com.conexa.conexachallenge.presentation.adapters.UsersAdapter
@@ -84,8 +85,10 @@ class UsersFragment : BaseFragment<FragmentUsersBinding>(
             binding.noResultsTxt.visibility = View.VISIBLE
         } else {
             binding.noResultsTxt.visibility = View.GONE
-            val arrayListOfUsers = ArrayList(usersList)
-            fillUsersRv(arrayListOfUsers)
+            usersList.let {
+                this.listOfUsers = it as ArrayList<UserResponse>
+                fillUsersRv(listOfUsers!!)
+            }
         }
     }
 
@@ -116,17 +119,17 @@ class UsersFragment : BaseFragment<FragmentUsersBinding>(
         }
     }
 
-    override fun onitemClick(position: Int) {
+    override fun onUserItemClick(position: Int) {
         listOfUsers?.get(position)
-            ?.let { navigateToProductDetailFragment(it.address.geo.lat,it.address.geo.lng) }
+            ?.let { navigateToUsersMapFragment(it.address.geo.lat,it.address.geo.lng) }
     }
 
-    private fun navigateToProductDetailFragment(lat: String, lng: String) {
+    private fun navigateToUsersMapFragment(lat: String, lng: String) {
         val bundle = Bundle().apply {
             putString(BundleKeys.USER_LAT, lat)
             putString(BundleKeys.USER_LNG, lng)
         }
-        findNavController().navigate(R.id.action_newsFragment_to_newsDetail, bundle)
+        findNavController().navigate(R.id.action_usersFragment_to_mapFragment, bundle)
     }
 
 }
