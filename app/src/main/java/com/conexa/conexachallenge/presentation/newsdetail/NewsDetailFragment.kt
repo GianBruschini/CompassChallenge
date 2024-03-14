@@ -13,6 +13,7 @@ import com.conexa.conexachallenge.databinding.FragmentNewsDetailBinding
 import com.conexa.conexachallenge.presentation.base.BaseFragment
 import com.conexa.conexachallenge.presentation.news.NewsViewModel
 import com.conexa.conexachallenge.util.BundleKeys
+import com.conexa.conexachallenge.util.NetworkUtils
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.launch
 
@@ -22,6 +23,7 @@ class NewsDetailFragment : BaseFragment<FragmentNewsDetailBinding>(
 ) {
     private val newsViewModel: NewsViewModel by viewModels()
     private var newsId: Int = 0
+
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         getDataFromBundle()
@@ -29,7 +31,21 @@ class NewsDetailFragment : BaseFragment<FragmentNewsDetailBinding>(
     }
 
     private fun getDataFromBundle() {
-        newsId = arguments?.getInt(BundleKeys.NEW_ID) ?: 0
+        if(NetworkUtils.isNetworkAvailable()){
+            newsId = arguments?.getInt(BundleKeys.NEW_ID) ?: 0
+        }else{
+            val newsTitle = arguments?.getString(BundleKeys.NEW_TITLE) ?: ""
+            val newsContent = arguments?.getString(BundleKeys.NEW_CONTENT) ?: ""
+            val newsImage = arguments?.getString(BundleKeys.NEW_IMAGE) ?: ""
+            fillUiWithData(newsTitle,newsContent,newsImage)
+        }
+
+    }
+
+    private fun fillUiWithData(newsTitle: String, newsContent: String, newsImage: String) {
+        context?.let { Glide.with(it).load(newsImage).into(binding.newsImage) }
+        binding.newsTitle.text=newsTitle
+        binding.newsDescription.text=newsContent
     }
 
     private fun initUi() {

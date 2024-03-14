@@ -57,6 +57,8 @@
         android:layout_marginTop="@dimen/margin_x_big"
         android:scrollbars="vertical"
         app:layout_constraintTop_toBottomOf="@id/btnUsers"
+        app:layout_constraintBottom_toBottomOf="parent"
+        android:layout_marginBottom="@dimen/margin_big"
         tools:listitem="@layout/news_item" />
 
 

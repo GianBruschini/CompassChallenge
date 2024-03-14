@@ -4,7 +4,6 @@ import android.annotation.SuppressLint
 import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
-import android.util.Log
 import android.view.View
 import android.widget.Toast
 import androidx.core.content.ContextCompat
@@ -20,6 +19,7 @@ import com.conexa.conexachallenge.databinding.FragmentNewsBinding
 import com.conexa.conexachallenge.presentation.adapters.NewsAdapter
 import com.conexa.conexachallenge.presentation.base.BaseFragment
 import com.conexa.conexachallenge.util.BundleKeys
+import com.conexa.conexachallenge.util.NetworkUtils
 import com.conexa.conexachallenge.util.hideKeyboard
 import com.conexa.conexachallenge.util.showCustomToast
 import dagger.hilt.android.AndroidEntryPoint
@@ -152,9 +152,32 @@ class NewsFragment : BaseFragment<FragmentNewsBinding>(
     }
 
     override fun onitemClick(position: Int) {
-        listOfNews?.get(position)
-            ?.let { navigateToUsersDetailFragment(it.id) }
+        if(NetworkUtils.isNetworkAvailable()){
+            listOfNews?.get(position)
+                ?.let { navigateToUsersDetailFragment(it.id) }
+        }else{
+            handleNoConnectionData(position)
+        }
 
+
+    }
+
+    private fun handleNoConnectionData(position: Int) {
+        listOfNews?.get(position)
+            ?.let { navigateToUsersDetailFragmentWithNoConnection(it.title,it.content,it.image) }
+    }
+
+    private fun navigateToUsersDetailFragmentWithNoConnection(
+        title: String,
+        content: String,
+        image: String
+    ) {
+        val bundle = Bundle().apply {
+            putString(BundleKeys.NEW_TITLE, title)
+            putString(BundleKeys.NEW_CONTENT, content)
+            putString(BundleKeys.NEW_IMAGE, image)
+        }
+        findNavController().navigate(R.id.action_newsFragment_to_newsDetail, bundle)
     }
 
     private fun navigateToUsersDetailFragment(newId: Int) {
