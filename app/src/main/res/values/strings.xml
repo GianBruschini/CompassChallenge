@@ -3,6 +3,7 @@
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
 
+    <string name="google_map_api_key">AIzaSyA_ZFvhCTWsn4E6sy0NiIvb-YjVN1nijT4</string>
     <!-- Errors-->
     <string name="error_unknown">We couldn\'t send to send your request. Please try again.</string>
     <string name="error_network_connection">Connection error. Please check your connection and try again.</string>
