@@ -29,5 +29,6 @@ El proyecto sigue una arquitectura MVVM (Modelo-Vista-ViewModel) con Clean Archi
 -utils: Utilidades y clases de ayuda varias.
 
 **Pruebas**
+
 Se incluyen pruebas unitarias y de integración para garantizar el buen funcionamiento de la aplicación.
 Unit Tests: Pruebas unitarias para lógica de negocio, casos de uso y modelos de datos.
