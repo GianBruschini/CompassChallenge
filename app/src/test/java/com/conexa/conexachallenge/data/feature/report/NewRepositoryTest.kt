@@ -55,16 +55,13 @@ class NewRepositoryTest {
             )
         )
 
-        // Mock behavior of remote data source using coEvery
         coEvery { newsRemoteDataSource.getPosts() } returns ResultNews.Success(newsResponseList)
 
-        // Call the function under test
         val result = newRepository.getNews()
 
-        // Verify that the local data source save function is called with the correct parameter
+
         verify(newsLocalDataSource).save(newsResponseList)
 
-        // Verify that the result matches the expected result
         assertEquals(ResultNews.Success(newsResponseList), result)
     }
 

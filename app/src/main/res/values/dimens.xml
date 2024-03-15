@@ -27,6 +27,7 @@
     <dimen name="height_medium">50dp</dimen>
     <dimen name="height_big">80dp</dimen>
     <dimen name="height_x_big">180dp</dimen>
+    <dimen name="height_xx_big">500dp</dimen>
 
     <dimen name="width_medium_small">25dp</dimen>
     <dimen name="width_medium">50dp</dimen>

@@ -40,11 +40,11 @@ class UsersViewModel @Inject constructor(
                         _uiState.update { it.copy(users = result.data) }
                     }
                     is ResultNews.Error -> {
-                        _uiState.value = UsersUiState(errorMessage = result.exception.message ?: "Unknown error")
+                        _uiState.value = UsersUiState(errorMessage = result.exception.errorMessage())
                     }
                 }
             } catch (e: Exception) {
-                _uiState.value = UsersUiState(userMessage = e.message ?: "Unknown error")
+                _uiState.value = UsersUiState(userMessage = e.message)
             } finally {
                 setLoading(false)
             }

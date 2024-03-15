@@ -9,5 +9,5 @@ data class UsersUiState(
     val users: List<UserResponse> = emptyList(),
     val loading: Boolean = false,
     val userMessage: String? = null,
-    val errorMessage: String? = null,
+    val errorMessage: BindingString? = null,
 )
