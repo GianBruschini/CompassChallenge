@@ -18,7 +18,6 @@ class GetNewsUseCase @Inject constructor(
             if (authResult is ResultNews.Error) {
                return@withContext ResultNews.Error(authResult.exception)
              }
-
             authResult
         }
 }

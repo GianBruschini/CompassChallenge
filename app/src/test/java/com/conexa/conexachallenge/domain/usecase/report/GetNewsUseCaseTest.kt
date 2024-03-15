@@ -8,8 +8,11 @@ import com.conexa.conexachallenge.data.feature.report.NewLocalDataSource
 import com.conexa.conexachallenge.data.feature.report.NewRemoteDataSource
 import com.conexa.conexachallenge.data.feature.report.NewRepository
 import com.conexa.conexachallenge.domain.model.ResultNews
+import io.mockk.MockKAnnotations
 
 import io.mockk.coEvery
+import io.mockk.impl.annotations.MockK
+import io.mockk.impl.annotations.RelaxedMockK
 import io.mockk.mockk
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.ExperimentalCoroutinesApi
@@ -28,37 +31,39 @@ import org.junit.runners.JUnit4
 @RunWith(JUnit4::class)
 class GetNewsUseCaseTest {
 
+
+    @RelaxedMockK
+    @MockK
+    private lateinit var newsRepository: NewRepository
+    lateinit var getNewsUseCase: GetNewsUseCase
+
+
     @get:Rule
-    val instantTaskExecutorRule = InstantTaskExecutorRule()
+    val rule = InstantTaskExecutorRule()
 
-    @ExperimentalCoroutinesApi
-    private val testDispatcher = TestCoroutineDispatcher()
-
-    private lateinit var getNewsUseCase: GetNewsUseCase
-    private lateinit var newsRemoteDataSource: NewRemoteDataSource
-    private lateinit var newsLocalDataSource: NewLocalDataSource
+    @OptIn(ExperimentalCoroutinesApi::class)
     @Before
-    fun setUp() {
-        Dispatchers.setMain(testDispatcher)
+    fun onBefore(){
+        MockKAnnotations.init(this)
+        newsRepository = mockk()
+        getNewsUseCase = GetNewsUseCase(newsRepository)
+        Dispatchers.setMain(Dispatchers.Unconfined)
 
-        // Mock dependencies
-        newsRemoteDataSource = mockk()
-        newsLocalDataSource = mockk()
-        val newsRepository = NewRepository(newsRemoteDataSource, newsLocalDataSource)
-        getNewsUseCase = GetNewsUseCase(newsRepository, testDispatcher)
     }
 
+
+    @OptIn(ExperimentalCoroutinesApi::class)
     @After
     fun tearDown() {
         Dispatchers.resetMain()
-        testDispatcher.cleanupTestCoroutines()
+
     }
 
     @Test
-    fun `testInvokeReturnsErrorWhenRepositoryFails`() {
+    fun testInvokeReturnsErrorWhenRepositoryFails() {
         // Given
         val error = Throwable("Test error")
-        coEvery { newsRemoteDataSource.getPosts() } returns ResultNews.Error(error)
+        coEvery { newsRepository.getNews() } returns ResultNews.Error(error)
 
         // When
         val result = runBlocking { getNewsUseCase() }
@@ -66,6 +71,32 @@ class GetNewsUseCaseTest {
         // Then
         assertTrue(result is ResultNews.Error)
         assertEquals(error, (result as ResultNews.Error).exception)
+    }
+
+    @Test
+    fun testInvokeReturnsSuccessWhenRepositorySucceeds() {
+        // Given
+        val newsList = listOf(
+            NewsResponse(
+                1,
+                "Test Title",
+                "Test Content",
+                "Test Image",
+                "Test Thumbnail",
+                "Test Category",
+                "2024-03-15T12:00:00",
+                "2024-03-15T12:00:00",
+                1
+            )
+        )
+        coEvery { newsRepository.getNews() } returns ResultNews.Success(newsList)
+
+        // When
+        val result = runBlocking { getNewsUseCase() }
+
+        // Then
+        assertTrue(result is ResultNews.Success)
+        assertEquals(newsList, (result as ResultNews.Success).data)
     }
 
 

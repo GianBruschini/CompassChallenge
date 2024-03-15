@@ -1,6 +1,12 @@
 package com.conexa.conexachallenge.data.feature.connectionerrors
 
+import android.content.Context
+
 object ErrorMessages {
-    const val NO_NETWORK = "No hay conexión a internet"
+    private lateinit var appContext: Context
+
+    fun init(context: Context) {
+        appContext = context.applicationContext
+    }
     const val NO_DATA_AVAILABLE = "No hay datos disponibles"
 }
