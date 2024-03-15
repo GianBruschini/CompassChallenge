@@ -13,9 +13,8 @@ El challenge es un proyecto que emplea una arquitectura moderna basada en MVVM c
 - Navigation Components: Para gestionar la navegación entre fragmentos.
 - Google Maps: Para integrar mapas de Google en la aplicación.
 - Dagger Hilt: Para la inyección de dependencias.
-- WorkManager: Para programar tareas asíncronas y en segundo plano.
 
-- 
+
 **Estructura del Proyecto**
 El proyecto sigue una arquitectura MVVM (Modelo-Vista-ViewModel) con Clean Architecture, lo que significa que está organizado en capas claras y separadas para facilitar el mantenimiento y la escalabilidad.
 
