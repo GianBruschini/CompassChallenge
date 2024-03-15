@@ -16,17 +16,18 @@ El challenge es un proyecto que emplea una arquitectura moderna basada en MVVM c
 
 
 **Estructura del Proyecto**
+
 El proyecto sigue una arquitectura MVVM (Modelo-Vista-ViewModel) con Clean Architecture, lo que significa que está organizado en capas claras y separadas para facilitar el mantenimiento y la escalabilidad.
 
--app: Contiene la implementación de la capa de presentación de la aplicación, incluyendo Actividades, Fragmentos, Adaptadores y ViewModels.
+- app: Contiene la implementación de la capa de presentación de la aplicación, incluyendo Actividades, Fragmentos, Adaptadores y ViewModels.
 
--data: Aquí se encuentra la implementación de las capas de datos, incluyendo Repositorios, Fuentes de datos remotos y locales, y modelos de datos.
+- data: Aquí se encuentra la implementación de las capas de datos, incluyendo Repositorios, Fuentes de datos remotos y locales, y modelos de datos.
 
--domain: Contiene la lógica de negocio y los casos de uso de la aplicación.
+- domain: Contiene la lógica de negocio y los casos de uso de la aplicación.
 
--di: Configuración de la inyección de dependencias utilizando Dagger Hilt.
+- di: Configuración de la inyección de dependencias utilizando Dagger Hilt.
 
--utils: Utilidades y clases de ayuda varias.
+- utils: Utilidades y clases de ayuda varias.
 
 **Pruebas**
 
