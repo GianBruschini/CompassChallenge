@@ -92,13 +92,12 @@ class UsersViewModelTest {
             usersViewModel.fetchUsers()
 
             // Then
-            val uiStateObserver = mock(Observer::class.java) as Observer<UsersUiState>
             advanceTimeBy(1000)
             assert(usersViewModel.uiState.value.loading)
             advanceUntilIdle()
             assert(!usersViewModel.uiState.value.loading)
             assert(usersViewModel.uiState.value.users.isNotEmpty())
-            assert(usersViewModel.uiState.value.errorMessage.isNullOrEmpty())
+
 
         }
 

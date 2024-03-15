@@ -26,6 +26,7 @@
     <dimen name="height_medium_small">25dp</dimen>
     <dimen name="height_medium">50dp</dimen>
     <dimen name="height_big">80dp</dimen>
+    <dimen name="height_big_less">150dp</dimen>
     <dimen name="height_x_big">180dp</dimen>
     <dimen name="height_xx_big">500dp</dimen>
 
@@ -37,9 +38,11 @@
 
     <dimen name="margin_small">4dp</dimen>
     <dimen name="margin_standard">8dp</dimen>
+    <dimen name="margin_standard_x">12dp</dimen>
     <dimen name="margin_medium">15dp</dimen>
     <dimen name="margin_big">20dp</dimen>
     <dimen name="margin_x_big">30dp</dimen>
+    <dimen name="margin_xx_big">40dp</dimen>
     <dimen name="margin_extra_big">100dp</dimen>
 
     <dimen name="text_extra_small">12sp</dimen>

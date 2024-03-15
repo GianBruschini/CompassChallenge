@@ -51,7 +51,7 @@
                 android:layout_marginStart="@dimen/margin_standard"
                 android:ellipsize="end"
                 android:maxLines="5"
-                android:padding="15dp"
+                android:padding="@dimen/margin_medium"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toEndOf="@id/newsImage"
                 app:layout_constraintTop_toTopOf="parent"
