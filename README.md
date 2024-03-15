@@ -1,6 +1,10 @@
 **Conexa Challenge**
+
 El challenge es un proyecto que emplea una arquitectura moderna basada en MVVM con Flow y Coroutines. Se ha implementado utilizando Clean Architecture, aprovechando diferentes patrones como el de repositorio, DataSources y Use Cases. Este proyecto proporciona un ejemplo práctico de cómo desarrollar una aplicación Android siguiendo las mejores prácticas y utilizando las últimas tecnologías disponibles.
+
+
 **Bibliotecas Utilizadas**
+
 - Retrofit & Gson: Para realizar llamadas a la API y convertir los datos JSON a objetos Kotlin.
 - Glide: Para cargar y mostrar imágenes de manera eficiente.
 - Coroutines: Para el manejo asíncrono y concurrente de tareas.
@@ -10,6 +14,8 @@ El challenge es un proyecto que emplea una arquitectura moderna basada en MVVM c
 - Google Maps: Para integrar mapas de Google en la aplicación.
 - Dagger Hilt: Para la inyección de dependencias.
 - WorkManager: Para programar tareas asíncronas y en segundo plano.
+
+- 
 **Estructura del Proyecto**
 El proyecto sigue una arquitectura MVVM (Modelo-Vista-ViewModel) con Clean Architecture, lo que significa que está organizado en capas claras y separadas para facilitar el mantenimiento y la escalabilidad.
 
