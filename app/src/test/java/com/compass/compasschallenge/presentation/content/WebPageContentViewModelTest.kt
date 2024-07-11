@@ -1,7 +1,7 @@
 package com.compass.compasschallenge.presentation.content
 
 import com.compass.compasschallenge.domain.model.ResultNews
-import com.compass.compasschallenge.domain.usecase.users.GetContentUseCase
+import com.compass.compasschallenge.domain.usecase.content.GetContentUseCase
 import io.mockk.coEvery
 import io.mockk.coVerify
 import io.mockk.mockk

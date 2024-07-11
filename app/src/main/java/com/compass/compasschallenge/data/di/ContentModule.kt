@@ -16,7 +16,7 @@ import javax.inject.Singleton
 
 @InstallIn(SingletonComponent::class)
 @Module
-internal object NewsModule {
+internal object ContentModule {
 
 
 

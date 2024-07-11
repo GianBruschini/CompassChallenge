@@ -1,4 +1,4 @@
-package com.compass.compasschallenge.domain.usecase.users
+package com.compass.compasschallenge.domain.usecase.content
 
 import com.compass.compasschallenge.data.feature.users.ContentRepository
 import com.compass.compasschallenge.domain.model.ResultNews

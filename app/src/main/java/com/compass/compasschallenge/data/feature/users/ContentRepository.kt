@@ -14,9 +14,8 @@ class ContentRepository @Inject constructor(
                 val response = userRemoteDataSource.getUsers()
                 if (response is ResultNews.Success) {
                     val content = response.data
-                    val result = content.filterIndexed { index, _ -> (index + 1) % 10 == 0 }
-                    userLocalDataSource.saveEvery10thCharacter(result)
-                    ResultNews.Success(result)
+                    userLocalDataSource.saveEvery10thCharacter(content)
+                    ResultNews.Success(content)
                 } else {
                     response as ResultNews.Error
                 }
@@ -33,17 +32,14 @@ class ContentRepository @Inject constructor(
         }
     }
 
-    suspend fun fetchWordCount(): ResultNews<String> {
+    suspend fun getWordCount(): ResultNews<String> {
         return if (NetworkUtils.isNetworkAvailable()) {
             try {
                 val response = userRemoteDataSource.getUsers()
                 if (response is ResultNews.Success) {
                     val content = response.data
-                    val words = content.split("\\s+".toRegex()).map { it.lowercase() }
-                    val wordCount = words.groupingBy { it }.eachCount()
-                    val wordCountString = wordCount.entries.joinToString("\n") { "${it.key}: ${it.value}" }
-                    userLocalDataSource.saveWordCount(wordCountString)
-                    ResultNews.Success(wordCountString)
+                    userLocalDataSource.saveWordCount(content)
+                    ResultNews.Success(content)
                 } else {
                     response as ResultNews.Error
                 }
@@ -59,4 +55,5 @@ class ContentRepository @Inject constructor(
             }
         }
     }
+
 }

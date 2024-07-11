@@ -3,7 +3,9 @@ package com.compass.compasschallenge.presentation.content
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.compass.compasschallenge.domain.model.ResultNews
-import com.compass.compasschallenge.domain.usecase.users.GetContentUseCase
+import com.compass.compasschallenge.domain.usecase.content.GetContentUseCase
+import com.compass.compasschallenge.domain.usecase.content.GetEvery10thCharacterUseCase
+import com.compass.compasschallenge.domain.usecase.content.GetWordCountUseCase
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.Job
 import kotlinx.coroutines.async
@@ -16,7 +18,8 @@ import javax.inject.Inject
 
 @HiltViewModel
 class WebPageContentViewModel @Inject constructor(
-    private val getContentUseCase: GetContentUseCase
+    private val getEvery10thCharacterUseCase: GetEvery10thCharacterUseCase,
+    private val getWordCountUseCase: GetWordCountUseCase
 ) : ViewModel() {
     private val _uiState = MutableStateFlow(WebPageUiState())
     val uiState: StateFlow<WebPageUiState> = _uiState.asStateFlow()
@@ -28,8 +31,8 @@ class WebPageContentViewModel @Inject constructor(
         fetchJob?.cancel()
         fetchJob = viewModelScope.launch {
             try {
-                val every10thCharResult = async { getContentUseCase() }
-                val wordCountResult = async { getContentUseCase.fetchWordCount() }
+                val every10thCharResult = async { getEvery10thCharacterUseCase.invoke() }
+                val wordCountResult = async { getWordCountUseCase.invoke() }
 
                 val every10thChar = every10thCharResult.await()
                 val wordCount = wordCountResult.await()
