@@ -2,9 +2,9 @@ package com.compass.compasschallenge.data.di
 
 import android.content.Context
 
-import com.compass.compasschallenge.data.feature.users.ContentLocalDataSource
-import com.compass.compasschallenge.data.feature.users.ContentRemoteDataSource
-import com.compass.compasschallenge.data.feature.users.ContentRepository
+import com.compass.compasschallenge.data.feature.content.ContentLocalDataSource
+import com.compass.compasschallenge.data.feature.content.ContentRemoteDataSource
+import com.compass.compasschallenge.data.feature.content.ContentRepository
 import com.compass.compasschallenge.data.service.ApiClient
 import com.google.gson.Gson
 import dagger.Module

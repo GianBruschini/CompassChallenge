@@ -1,4 +1,4 @@
-package com.compass.compasschallenge.data.feature.users
+package com.compass.compasschallenge.data.feature.content
 
 import android.content.Context
 import android.content.SharedPreferences

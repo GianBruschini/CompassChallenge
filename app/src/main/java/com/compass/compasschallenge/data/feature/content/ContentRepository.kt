@@ -1,4 +1,4 @@
-package com.compass.compasschallenge.data.feature.users
+package com.compass.compasschallenge.data.feature.content
 
 import com.compass.compasschallenge.domain.model.ResultNews
 import com.compass.compasschallenge.util.NetworkUtils

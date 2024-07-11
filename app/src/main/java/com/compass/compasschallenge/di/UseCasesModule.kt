@@ -1,10 +1,9 @@
 package com.compass.compasschallenge.di
 
 
-import com.compass.compasschallenge.data.feature.users.ContentRepository
+import com.compass.compasschallenge.data.feature.content.ContentRepository
 import com.compass.compasschallenge.domain.usecase.content.GetWordCountUseCase
 
-import com.compass.compasschallenge.domain.usecase.content.GetContentUseCase
 import com.compass.compasschallenge.domain.usecase.content.GetEvery10thCharacterUseCase
 import dagger.Module
 import dagger.Provides

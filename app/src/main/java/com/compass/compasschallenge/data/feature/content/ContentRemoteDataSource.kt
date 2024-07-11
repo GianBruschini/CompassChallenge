@@ -1,4 +1,4 @@
-package com.compass.compasschallenge.data.feature.users
+package com.compass.compasschallenge.data.feature.content
 
 import com.compass.compasschallenge.data.api.BaseRemoteDataSource
 import com.compass.compasschallenge.data.service.ApiClient

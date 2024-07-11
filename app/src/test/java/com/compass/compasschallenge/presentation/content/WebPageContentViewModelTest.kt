@@ -2,6 +2,16 @@ package com.compass.compasschallenge.presentation.content
 
 import com.compass.compasschallenge.domain.model.ResultNews
 import com.compass.compasschallenge.domain.usecase.content.GetContentUseCase
+import com.compass.compasschallenge.domain.usecase.content.GetEvery10thCharacterUseCase
+import com.compass.compasschallenge.domain.usecase.content.GetWordCountUseCase
+import io.mockk.coEvery
+import io.mockk.coVerify
+import io.mockk.mockk
+
+import kotlinx.coroutines.test.runTest
+import org.junit.Assert.assertEquals
+
+
 import io.mockk.coEvery
 import io.mockk.coVerify
 import io.mockk.mockk
@@ -15,11 +25,12 @@ import org.junit.Test
 class WebPageContentViewModelTest {
 
     private lateinit var viewModel: WebPageContentViewModel
-    private val useCase: GetContentUseCase = mockk()
+    private val getEvery10thCharacterUseCase: GetEvery10thCharacterUseCase = mockk()
+    private val getWordCountUseCase: GetWordCountUseCase = mockk()
 
     @Before
     fun setUp() {
-        viewModel = WebPageContentViewModel(useCase)
+        viewModel = WebPageContentViewModel(getEvery10thCharacterUseCase, getWordCountUseCase)
     }
 
     @Test
@@ -27,13 +38,13 @@ class WebPageContentViewModelTest {
         val mockResponseEvery10thChar = ResultNews.Success(" ... ... ")
         val mockResponseWordCount = ResultNews.Success("sample: 2\ncontent: 2")
 
-        coEvery { useCase.invoke() } returns mockResponseEvery10thChar
-        coEvery { useCase.fetchWordCount() } returns mockResponseWordCount
+        coEvery { getEvery10thCharacterUseCase.invoke() } returns mockResponseEvery10thChar
+        coEvery { getWordCountUseCase.invoke() } returns mockResponseWordCount
 
         viewModel.fetchContent()
 
-        coVerify { useCase.invoke() }
-        coVerify { useCase.fetchWordCount() }
+        coVerify { getEvery10thCharacterUseCase.invoke() }
+        coVerify { getWordCountUseCase.invoke() }
 
         assertEquals(" ... ... ", viewModel.uiState.value.every10thCharacter)
         assertEquals("sample: 2\ncontent: 2", viewModel.uiState.value.wordCount)
@@ -43,13 +54,13 @@ class WebPageContentViewModelTest {
     fun `test fetchContent failure`() = runTest {
         val mockError = ResultNews.Error(Exception("Network Error"))
 
-        coEvery { useCase.invoke() } returns mockError
-        coEvery { useCase.fetchWordCount() } returns mockError
+        coEvery { getEvery10thCharacterUseCase.invoke() } returns mockError
+        coEvery { getWordCountUseCase.invoke() } returns mockError
 
         viewModel.fetchContent()
 
-        coVerify { useCase.invoke() }
-        coVerify { useCase.fetchWordCount() }
+        coVerify { getEvery10thCharacterUseCase.invoke() }
+        coVerify { getWordCountUseCase.invoke() }
 
         assertEquals("Network Error", viewModel.uiState.value.errorMessage)
     }
