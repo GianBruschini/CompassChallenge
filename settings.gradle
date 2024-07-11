@@ -13,5 +13,5 @@ dependencyResolutionManagement {
     }
 }
 
-rootProject.name = "ConexaChallenge"
+rootProject.name = "CompassChallenge"
 include ':app'

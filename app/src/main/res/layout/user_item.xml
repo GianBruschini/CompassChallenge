@@ -56,7 +56,7 @@
                 android:ellipsize="end"
                 android:maxLines="5"
                 android:padding="@dimen/margin_medium"
-                android:text="@string/map_see_location"
+                android:text="asd"
                 android:textSize="@dimen/text_extra_small"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.485"

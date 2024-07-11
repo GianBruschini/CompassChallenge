@@ -8,33 +8,10 @@
 
     <fragment
         android:id="@+id/newsFragment"
-        android:name="com.conexa.conexachallenge.presentation.news.NewsFragment"
+        android:name="com.compass.compasschallenge.presentation.content.WebPageContentFragment"
         android:label="fragment_news"
-        tools:layout="@layout/fragment_news" >
-        <action
-            android:id="@+id/action_newsFragment_to_newsDetail"
-            app:destination="@id/newsDetail" />
-        <action
-            android:id="@+id/action_newsFragment_to_usersFragment"
-            app:destination="@id/usersFragment" />
+         >
+
     </fragment>
-    <fragment
-        android:id="@+id/newsDetail"
-        android:name="com.conexa.conexachallenge.presentation.newsdetail.NewsDetailFragment"
-        android:label="fragment_news_detail"
-        tools:layout="@layout/fragment_news_detail" />
-    <fragment
-        android:id="@+id/usersFragment"
-        android:name="com.conexa.conexachallenge.presentation.user.UsersFragment"
-        android:label="fragment_users"
-        tools:layout="@layout/fragment_users" >
-        <action
-            android:id="@+id/action_usersFragment_to_mapFragment"
-            app:destination="@id/mapFragment" />
-    </fragment>
-    <fragment
-        android:id="@+id/mapFragment"
-        android:name="com.conexa.conexachallenge.presentation.maps.MapFragment"
-        android:label="fragment_map"
-        tools:layout="@layout/fragment_map" />
+
 </navigation>
